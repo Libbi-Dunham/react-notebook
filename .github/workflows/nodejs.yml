@@ -15,8 +15,8 @@ jobs:
       - run: npm ci
       - run: npm test
         env:
-          SUPABASE_URL: ${{secrets.SUPABASE_URL}}
-          SUPABASE_KEY: ${{secrets.SUPABASE_KEY}}
-          AUTH_EMAIL: ${{secrets.AUTH_EMAIL}}
-          AUTH_PASSWORD: ${{secrets.AUTH_PASSWORD}}
+          REACT_APP_SUPABASE_URL: ${{secrets.REACT_APP_SUPABASE_URL}}
+          REACT_APP_SUPABASE_KEY: ${{secrets.REACT_APP_SUPABASE_KEY}}
+          REACT_APP_AUTH_EMAIL: ${{secrets.REACT_APP_AUTH_EMAIL}}
+          REACT_APP_AUTH_PASSWORD: ${{secrets.REACT_APP_AUTH_PASSWORD}}
           CI: true
