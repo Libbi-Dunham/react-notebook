@@ -1,3 +1,4 @@
+import { response } from 'msw';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import UserForm from '../../components/UserForm/UserForm';
@@ -17,6 +18,14 @@ export default function Auth({ isSigningUp = false }) {
       // If signing in: set the user ({id, email}) and redirect to /notes
       // If signing up: redirect to /confirm-email
       // Use the corresponding functions from `/services/users` for both cases
+      if (isSigningUp) {
+        await signUpUser(email, password);
+        history.push('/confirm-email');
+      } else {
+        const response = await signInUser(email, password);
+        setUser({ id: response.id, email: response.email });
+        history.replace('/notes');
+      }
     } catch (error) {
       throw error;
     }
